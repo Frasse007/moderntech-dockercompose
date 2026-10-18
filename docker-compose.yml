@@ -12,7 +12,7 @@ services:
       - recipe_data:/app/data # Persists SQLite database data outside container lifecycle
   # Frontend Web Service (React/Vite served via Nginx)
   frontend:
-    build: ./frontend # Path for backend directory
+    build: ./frontend # Path for frontend directory
     ports:
       - "3000:80" # Maps host port 3000 to Nginx's internal port 80
     depends_on:
@@ -20,6 +20,6 @@ services:
     environment:
       - VITE_API_URL=http://localhost:5000 # Configures the API endpoint for frontend consumption
 
-# Global volumes for data persistencce across container restarts
+# Global volumes for data persistence across container restarts
 volumes:
-  recipe_data: # Named volumed used by the backend
+  recipe_data: # Named volume used by the backend
