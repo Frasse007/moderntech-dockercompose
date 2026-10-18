@@ -1,20 +1,25 @@
+# Defines what version to use
 version: '3.8'
 
+# Define the multi-container application services
 services:
+  # Backend API Service (Node.js / Express with SQLite database)
   backend:
-    build: ./backend
+    build: ./backend # Path for backend directory
     ports:
-      - "5000:5000"
+      - "5000:5000" # Maps host port 5000 to container port 5000
     volumes:
-      - recipe_data:/app/data
+      - recipe_data:/app/data # Persists SQLite database data outside container lifecycle
+  # Frontend Web Service (React/Vite served via Nginx)
   frontend:
-    build: ./frontend
+    build: ./frontend # Path for backend directory
     ports:
-      - "3000:80"
+      - "3000:80" # Maps host port 3000 to Nginx's internal port 80
     depends_on:
-      - backend
+      - backend # Ensures the backend container starts before the frontend container
     environment:
-      - VITE_API_URL=http://localhost:5000
+      - VITE_API_URL=http://localhost:5000 # Configures the API endpoint for frontend consumption
 
+# Global volumes for data persistencce across container restarts
 volumes:
-  recipe_data:
+  recipe_data: # Named volumed used by the backend
