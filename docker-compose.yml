@@ -17,4 +17,4 @@ services:
       - VITE_API_URL=http://localhost:5000
 
 volumes:
-recipe_data:
+  recipe_data:
