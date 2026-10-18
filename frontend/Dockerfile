@@ -25,4 +25,4 @@ COPY --from=0 /app/dist /usr/share/nginx/html
 EXPOSE 80
 
 # Starts nginx to serve the application
-CMD ["nginx", "-g", "deamon off;"]
+CMD ["nginx", "-g", "daemon off;"]
