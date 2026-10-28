@@ -11,6 +11,10 @@ COPY package-lock.json .
 # Installs the dependencies specified in package.json
 RUN npm install
 
+# Accept build argument 
+ARG VITE_API_URL 
+ENV VITE_API_URL=$VITE_API_URL
+
 # Copies all the application files from local directory to current directory (/app as specified above)
 COPY . .
 
