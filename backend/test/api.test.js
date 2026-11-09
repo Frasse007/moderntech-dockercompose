@@ -77,7 +77,7 @@ describe('Recipe API Tests', () => {
     test('should return a specific recipe', async () => {
       const response = await request(app)
         .get('/api/recipes/1')
-        .expect(203);
+        .expect(200);
 
       expect(response.body).toHaveProperty('id', 1);
       expect(response.body).toHaveProperty('name');
